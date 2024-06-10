@@ -174,6 +174,7 @@ class _LoginViewWidgetState extends State<LoginViewWidget> {
                           TextButton(
                             onPressed: () {
                               Get.toNamed('/home');
+                              // coucou
                             },
                             child: Text(
                               'Se connecter',
