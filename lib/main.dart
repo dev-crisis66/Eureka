@@ -1,9 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+Future<void> main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -19,29 +22,16 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Home(),
+      home: const Home(),
     );
   }
 }
 
-class Controller extends GetxController{
-  var count = 0.obs;
-  increment() => count++;
-}
-
 class Home extends StatelessWidget {
+  const Home({super.key});
 
   @override
-  Widget build(context) {
-
-    final Controller c = Get.put(Controller());
-
-    return Scaffold(
-
-        appBar: AppBar(title: Obx(() => Text("Clicks: ${c.count}"))),
-
-        body: const Center(child: CircularProgressIndicator(),),
-        floatingActionButton:
-        FloatingActionButton(onPressed: c.increment, child: const Icon(Icons.add)));
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }
