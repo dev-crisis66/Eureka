@@ -1,18 +1,32 @@
-import 'package:eureka/core/database.dart';
 import 'package:flutter/material.dart';
 
-class ProfileView extends StatelessWidget {
-  ProfileView({super.key});
+class ProfileViewWidget extends StatefulWidget {
+  const ProfileViewWidget({super.key});
 
-  final database = Database();
+  @override
+  State<ProfileViewWidget> createState() => _ProfileViewWidgetState();
+}
+
+class _ProfileViewWidgetState extends State<ProfileViewWidget> {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(
-      child: Column(children: [
-        ElevatedButton(onPressed: () {
-          database.logout();
-        }, child: Text("Deconnexion"))
-      ],),
-    ),);
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: Colors.blueAccent,
+      body: SafeArea(
+        top: true,
+        child: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(30, 55, 30, 0),
+          child: Text('Profile View'),
+        ),
+      ),
+    );
   }
 }

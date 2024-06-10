@@ -1,10 +1,14 @@
-import 'package:eureka/views/ProfileView.dart';
+import 'package:eureka/core/routes/app_screens.dart';
+import 'package:eureka/views/LoginView.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'core/routes/app_routes.dart';
+import 'package:get/get.dart';
+
 import 'firebase_options.dart';
 
 Future<void> main() async {
-
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -16,14 +20,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Eurêka',
+    return GetMaterialApp(
+      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: ProfileView(),
+      home: const LoginViewWidget(),
+      getPages: AppScreens.routes,
     );
+  }
+}
+
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }
