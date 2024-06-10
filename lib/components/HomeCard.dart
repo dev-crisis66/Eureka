@@ -1,12 +1,4 @@
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-
-import 'home_card_model.dart';
-export 'home_card_model.dart';
 
 class HomeCardWidget extends StatefulWidget {
   const HomeCardWidget({super.key});
@@ -16,24 +8,18 @@ class HomeCardWidget extends StatefulWidget {
 }
 
 class _HomeCardWidgetState extends State<HomeCardWidget> {
-  late HomeCardModel _model;
-
   @override
   void setState(VoidCallback callback) {
     super.setState(callback);
-    _model.onUpdate();
   }
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => HomeCardModel());
   }
 
   @override
   void dispose() {
-    _model.maybeDispose();
-
     super.dispose();
   }
 
@@ -44,7 +30,7 @@ class _HomeCardWidgetState extends State<HomeCardWidget> {
       child: Container(
         width: MediaQuery.sizeOf(context).width,
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).secondaryBackground,
+          color: Colors.orange,
           boxShadow: [
             BoxShadow(
               blurRadius: 8,
@@ -94,13 +80,6 @@ class _HomeCardWidgetState extends State<HomeCardWidget> {
                     children: [
                       Text(
                         'Home Name',
-                        style: FlutterFlowTheme.of(context)
-                            .titleMedium
-                            .override(
-                          fontFamily: 'Outfit',
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          letterSpacing: 0,
-                        ),
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
@@ -108,17 +87,8 @@ class _HomeCardWidgetState extends State<HomeCardWidget> {
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            RatingBarIndicator(
-                              itemBuilder: (context, index) => Icon(
-                                Icons.radio_button_checked,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                              ),
-                              direction: Axis.horizontal,
-                              rating: 4,
-                              unratedColor:
-                              FlutterFlowTheme.of(context).secondaryText,
-                              itemCount: 5,
-                              itemSize: 16,
+                            Icon(
+                              Icons.radio_button_checked,
                             ),
                           ],
                         ),
@@ -129,7 +99,7 @@ class _HomeCardWidgetState extends State<HomeCardWidget> {
                     width: 75,
                     height: 32,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).primaryText,
+                      color: Colors.orange,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     alignment: AlignmentDirectional(0, 0),
@@ -137,12 +107,6 @@ class _HomeCardWidgetState extends State<HomeCardWidget> {
                       padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
                       child: Text(
                         'Price',
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Outfit',
-                          color: FlutterFlowTheme.of(context)
-                              .secondaryBackground,
-                          letterSpacing: 0,
-                        ),
                       ),
                     ),
                   ),
