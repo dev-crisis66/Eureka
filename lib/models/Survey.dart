@@ -20,7 +20,18 @@ class Survey {
   }
 
   static Stream<QuerySnapshot<Map<String, dynamic>>> getSurveys() {
-    return FirebaseFirestore.instance
-        .collection("surveys").snapshots();
+    return FirebaseFirestore.instance.collection("surveys").snapshots();
+  }
+
+  static void add(Map<String, dynamic> surveyData) {
+    FirebaseFirestore.instance.collection("survey").add(surveyData);
+  }
+
+  static void update(String surveyId, Map<String, dynamic> surveyData) {
+    FirebaseFirestore.instance.doc("survey/$surveyId").update(surveyData);
+  }
+
+  static void delete(String surveyId) {
+    FirebaseFirestore.instance.doc("survey/$surveyId").delete();
   }
 }

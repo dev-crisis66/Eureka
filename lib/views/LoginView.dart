@@ -1,18 +1,29 @@
 import 'package:eureka/components/CustomButton.dart';
+import 'package:eureka/models/User.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../utils.dart';
 
-class LoginViewWidget extends StatefulWidget {
-  const LoginViewWidget({super.key});
+class LoginView extends StatefulWidget {
+  LoginView({super.key});
 
   @override
-  State<LoginViewWidget> createState() => _LoginViewWidgetState();
+  State<LoginView> createState() => _LoginViewState();
 }
 
-class _LoginViewWidgetState extends State<LoginViewWidget> {
+class _LoginViewState extends State<LoginView> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final TextEditingController email = TextEditingController(text: "test@gmail.com");
+
+  final TextEditingController password = TextEditingController(text: "test6666");
+
+  final formKey = GlobalKey<FormState>();
+
+  late bool hasError = false;
+  late bool passwordIcon = false;
+
+  late String errorMsg = "";
 
   @override
   Widget build(BuildContext context) {
@@ -22,39 +33,42 @@ class _LoginViewWidgetState extends State<LoginViewWidget> {
       body: Stack(
         children: [
           Container(
-            alignment: AlignmentDirectional(0, 0),
+            alignment: const AlignmentDirectional(0, 0),
             child: Image.asset(
               'images/register.png',
               fit: BoxFit.cover,
             ),
           ),
           Center(
-            child: Container(
+            child: SizedBox(
               width: 300.0,
               child: Form(
+                key: formKey,
                 autovalidateMode: AutovalidateMode.disabled,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 160,
                     ),
-                    Text(
+                    const Text(
                       'Login',
                       style: TextStyle(
+                        fontWeight: FontWeight.bold,
                         color: Utils.orange,
                         fontSize: 18,
                       ),
                     ),
                     TextFormField(
                       autofocus: true,
+                      controller: email,
                       obscureText: false,
                       decoration: InputDecoration(
                         enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black,
+                          borderSide: const BorderSide(
+                            color: Utils.darkGrey,
                             width: 2,
                           ),
                           borderRadius: BorderRadius.circular(15),
@@ -63,24 +77,24 @@ class _LoginViewWidgetState extends State<LoginViewWidget> {
                           borderRadius: BorderRadius.circular(15),
                         ),
                         errorBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.red,
+                          borderSide: const BorderSide(
+                            color: Utils.orange,
                             width: 2,
                           ),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         focusedErrorBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.red,
+                          borderSide: const BorderSide(
+                            color: Utils.orange,
                             width: 2,
                           ),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         filled: true,
-                        fillColor: Colors.white,
+                        fillColor: Utils.white,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Column(
@@ -88,92 +102,124 @@ class _LoginViewWidgetState extends State<LoginViewWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'Mot de passe',
                           style: TextStyle(
+                            fontWeight: FontWeight.bold,
                             color: Utils.orange,
                             fontSize: 18,
                           ),
                         ),
                         TextFormField(
-                          autofocus: true,
-                          decoration: InputDecoration(
-                            enabledBorder: UnderlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.orange,
-                                width: 2,
+                            autofocus: true,
+                            controller: password,
+                            obscureText: passwordIcon,
+                            decoration: InputDecoration(
+                              enabledBorder: UnderlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
                               ),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            errorBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.red,
-                                width: 2,
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Utils.orange,
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(15),
                               ),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            focusedErrorBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.red,
-                                width: 2,
+                              errorBorder: UnderlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Utils.orange,
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(15),
                               ),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            filled: true,
-                            fillColor: Colors.white,
-                            suffixIcon: InkWell(
-                              onTap: () => (),
-                              focusNode: FocusNode(skipTraversal: true),
-                              child: Icon(
-                                Icons.visibility_outlined,
-                                size: 22,
+                              focusedErrorBorder: UnderlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Utils.orange,
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(15),
                               ),
-                            ),
-                          ),
-                        ),
+                              filled: true,
+                              fillColor: Utils.white,
+                              suffixIcon: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    passwordIcon = !passwordIcon;
+                                  });
+                                },
+                                child: Icon(
+                                  passwordIcon
+                                      ? Icons.visibility_outlined
+                                      : Icons.visibility_off_outlined,
+                                  size: 22,
+                                ),
+                              ),
+                            )),
                       ],
                     ),
-                    Container(
-                      width: 100,
-                      height: 80,
-                      decoration: BoxDecoration(
-                        color: Color(0x00FFFFFF),
-                      ),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    Center(
+                      child: hasError
+                          ? Container(
+                              width: 300,
+                              height: 110,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  color: Utils.darkGrey,
+                                  border: Border.all(color: Utils.orange),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(8))),
+                              child: Text(errorMsg,
+                                  style: const TextStyle(
+                                      color: Utils.orange, fontSize: 25)),
+                            )
+                          : Container(
+                              width: 300,
+                              height: 20,
+                              decoration: const BoxDecoration(
+                                color: Utils.darkGrey,
+                              )),
+                    ),
+                    const SizedBox(
+                      height: 40,
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(80, 0, 80, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(80, 0, 80, 0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           CustomButton(
                             onPressed: () {
-                              Get.toNamed('/home');
+                              if (formKey.currentState!.validate() &&
+                                  email.text.isNotEmpty &&
+                                  password.text.isNotEmpty) {
+                                UserModel.signIn(email, password);
+                                Get.offNamed("/test");
+                              } else {
+                                setState(() {
+                                  hasError = true;
+                                  errorMsg = "T'es serieux là !";
+                                });
+                              }
                             },
                             backgroundColor: Utils.orange,
                             text: 'Se connecter',
-                            textColor: Colors.white,
+                            textColor: Utils.white,
                           ),
-                          Align(
-                            alignment: AlignmentDirectional(0, 0),
-                            child: InkWell(
-                              onTap: () async {},
-                              child: Text(
-                                'S\'inscrire',
-                              ),
-                            ),
+                          const SizedBox(height: 20,),
+                          CustomButton(
+                            onPressed: () {
+                              Get.offNamed("/register");
+                            },
+                            backgroundColor: Utils.orange,
+                            text: "S'enregistrer",
+                            textColor: Utils.white,
                           ),
                         ],
-                      ),
-                    ),
-                    Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: Color(0x00FFFFFF),
                       ),
                     ),
                   ],

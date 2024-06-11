@@ -1,6 +1,5 @@
 import 'package:eureka/core/routes/app_screens.dart';
 import 'package:eureka/views/LoginView.dart';
-import 'package:eureka/views/TestView.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -24,12 +23,11 @@ class MyApp extends StatelessWidget {
       title: 'Eurêka',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: "KleeOne",
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
         fontFamily: 'Inter',
       ),
-      home: const TestView(),
+      home: LoginView(),
       getPages: AppScreens.routes,
     );
   }

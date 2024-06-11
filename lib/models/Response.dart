@@ -18,7 +18,20 @@ class ResponsesModel {
   }
 
   static Stream<QuerySnapshot<Map<String, dynamic>>> getResponses() {
-    return FirebaseFirestore.instance
-        .collection("responses").snapshots();
+    return FirebaseFirestore.instance.collection("responses").snapshots();
+  }
+
+  static void add(Map<String, dynamic> responseData) {
+    FirebaseFirestore.instance.collection("responses").add(responseData);
+  }
+
+  static void update(String responseId, Map<String, dynamic> responseData) {
+    FirebaseFirestore.instance
+        .doc("responses/$responseId")
+        .update(responseData);
+  }
+
+  static void delete(String responseId) {
+    FirebaseFirestore.instance.doc("responses/$responseId").delete();
   }
 }

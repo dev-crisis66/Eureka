@@ -1,3 +1,4 @@
+import 'package:eureka/views/TestView.dart';
 import 'package:get/get.dart';
 import '../../views/HomeView.dart';
 import '../../views/LoginView.dart';
@@ -17,15 +18,19 @@ class AppScreens {
     ),
     GetPage(
       name: RoutePaths.login,
-      page: () => const LoginView(),
+      page: () => LoginView(),
     ),
     GetPage(
       name: RoutePaths.register,
-      page: () => const RegisterView(),
+      page: () => RegisterView(),
     ),
     GetPage(
       name: RoutePaths.profile,
       page: () => const ProfileView(),
+    ),
+    GetPage(
+      name: RoutePaths.test,
+      page: () => const TestView(),
     ),
   ];
 }

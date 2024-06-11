@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eureka/models/Section.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class UserModel {
   late String uid;
@@ -18,21 +20,39 @@ class UserModel {
     };
   }
 
-  static Stream<QuerySnapshot<Map<String, dynamic>>> getUsers() {
-    return FirebaseFirestore.instance
-        .collection("users").snapshots();
+  static UserModel fromMap(DocumentSnapshot map) {
+    return UserModel(
+        map['uid'], map['firstname'], map['lastname'], map['section_id']);
   }
 
-  static void register(firstname, lastname, emailAddress, password, sectionId) async {
+  static Stream<QuerySnapshot<Map<String, dynamic>>> getUsers() {
+    return FirebaseFirestore.instance.collection("users").snapshots();
+  }
+
+  static void update(String userId, Map<String, dynamic> userData) {
+    FirebaseFirestore.instance.doc("users/$userId").update(userData);
+  }
+
+  static void delete(String userId) {
+    try {
+      FirebaseFirestore.instance.doc("users/$userId").delete();
+      print('Alors ?');
+    } on FirebaseException catch (e) {
+      print(e.message);
+    }
+  }
+
+  static void register(
+      firstname, lastname, emailAddress, password, sectionId) async {
     try {
       final credential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailAddress,
         password: password,
       );
-      UserModel user =
-          UserModel(credential.user!.uid, firstname, lastname, sectionId);
-      FirebaseFirestore.instance.collection("users").add(user.toMap());
+        UserModel user = UserModel(
+            credential.user!.uid, firstname, lastname, sectionId);
+        FirebaseFirestore.instance.doc("users/${user.uid}").set(user.toMap());
     } on FirebaseAuthException catch (e) {
       print(e);
       if (e.code == 'weak-password') {
