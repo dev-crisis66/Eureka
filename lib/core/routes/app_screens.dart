@@ -1,9 +1,11 @@
+import 'package:eureka/views/AnonymeView.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../../views/HomeView.dart';
 import '../../views/LoginView.dart';
 import '../../views/ProfileView.dart';
 import '../../views/RegisterView.dart';
+import '../../views/AnonymeView.dart';
 import 'app_routes.dart';
 
 class AppScreens {
@@ -27,6 +29,10 @@ class AppScreens {
     GetPage(
       name: RoutePaths.profile,
       page: () => const ProfileViewWidget(),
+    ),
+    GetPage(
+      name: RoutePaths.anonyme,
+      page: () => const Anonymeview(),
     ),
   ];
 }

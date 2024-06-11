@@ -1,4 +1,9 @@
+import 'package:eureka/components/CustomButton.dart';
+import 'package:eureka/components/HomeCard.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../utils.dart';
 
 class HomeViewWidget extends StatefulWidget {
   const HomeViewWidget({super.key});
@@ -19,7 +24,7 @@ class _HomeViewWidgetState extends State<HomeViewWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Colors.blueAccent,
+      backgroundColor: Utils.darkGrey,
       body: Align(
         alignment: AlignmentDirectional(0, 0),
         child: Padding(
@@ -44,20 +49,53 @@ class _HomeViewWidgetState extends State<HomeViewWidget> {
                           color: Colors.white,
                           size: 30,
                         ),
-                        onPressed: () async {},
+                        onPressed: () {
+                          Get.toNamed('/profile');
+                        },
                       ),
                     ),
                     TextButton(
                       onPressed: () {
                         print('Button pressed ...');
                       },
-                      child: Text('Créer un sondage'),
+                      child: CustomButton(
+                        text: 'Créer un sondage',
+                        backgroundColor: Utils.orange,
+                        textColor: Utils.white,
+                        onPressed: () {
+                          Get.toNamed('/anonyme');
+                        },
+                      ),
                     ),
                   ],
                 ),
               ),
+              SizedBox(
+                height: 20,
+              ),
               Text(
                 'Sondages disponibles',
+                style: TextStyle(
+                  color: Utils.white,
+                  fontSize: 30,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 20,
+                      ),
+                      HomeCardWidget(),
+                      HomeCardWidget(),
+                      HomeCardWidget(),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
