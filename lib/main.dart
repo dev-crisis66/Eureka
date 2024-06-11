@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "KleeOne",
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        fontFamily: 'Inter',
       ),
       home: const TestView(),
       getPages: AppScreens.routes,
