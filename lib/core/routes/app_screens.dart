@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:flutter/material.dart';
 import '../../views/HomeView.dart';
 import '../../views/LoginView.dart';
 import '../../views/ProfileView.dart';
@@ -14,19 +13,19 @@ class AppScreens {
   static final routes = [
     GetPage(
       name: RoutePaths.home,
-      page: () => const HomeViewWidget(),
+      page: () => const HomeView(),
     ),
     GetPage(
       name: RoutePaths.login,
-      page: () => const LoginViewWidget(),
+      page: () => const LoginView(),
     ),
     GetPage(
       name: RoutePaths.register,
-      page: () => const RegisterViewWidget(),
+      page: () => const RegisterView(),
     ),
     GetPage(
       name: RoutePaths.profile,
-      page: () => const ProfileViewWidget(),
+      page: () => const ProfileView(),
     ),
   ];
 }
