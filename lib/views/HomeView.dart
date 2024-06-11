@@ -83,7 +83,7 @@ class _HomeViewWidgetState extends State<HomeViewWidget> {
               SizedBox(
                 height: 20,
               ),
-              Expanded(
+              Center(
                 child: SingleChildScrollView(
                   child: Column(
                     children: [

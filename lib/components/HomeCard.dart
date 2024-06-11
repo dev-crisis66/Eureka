@@ -29,7 +29,8 @@ class _HomeCardWidgetState extends State<HomeCardWidget> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Center(
+        Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 40),
           child: Transform.rotate(
             angle: 8 * 3.141592653589793 / 180,
             child: Container(
@@ -45,7 +46,7 @@ class _HomeCardWidgetState extends State<HomeCardWidget> {
         Padding(
           padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 40),
           child: Container(
-            width: MediaQuery.sizeOf(context).width,
+            width: 465,
             decoration: BoxDecoration(
               color: Utils.white,
               borderRadius: BorderRadius.circular(12),
