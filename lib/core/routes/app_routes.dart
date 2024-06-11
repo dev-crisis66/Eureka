@@ -7,6 +7,7 @@ abstract class Routes {
   static const profile = RoutePaths.profile;
   static const home = RoutePaths.home;
   static const anonyme = RoutePaths.anonyme;
+  static const test = RoutePaths.test;
 }
 
 abstract class RoutePaths {
@@ -18,4 +19,5 @@ abstract class RoutePaths {
   static const register = '/register';
   static const profile = '/profile';
   static const anonyme = '/anonyme';
+  static const test = '/test';
 }

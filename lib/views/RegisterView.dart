@@ -311,7 +311,7 @@ class _RegisterViewState extends State<RegisterView> {
                                   password.text == confirmPassword.text) {
                                 UserModel.register(
                                     "", "", email.text, password.text, selectedSection);
-                                Get.offNamed("/test");
+                                Get.offNamed("/home");
                               } else {
                                 setState(() {
                                   hasError = true;

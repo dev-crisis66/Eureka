@@ -5,14 +5,14 @@ import 'package:get/get.dart';
 
 import '../utils.dart';
 
-class HomeViewWidget extends StatefulWidget {
-  const HomeViewWidget({super.key});
+class HomeView extends StatefulWidget {
+  const HomeView({super.key});
 
   @override
-  State<HomeViewWidget> createState() => _HomeViewWidgetState();
+  State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeViewWidgetState extends State<HomeViewWidget> {
+class _HomeViewState extends State<HomeView> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override

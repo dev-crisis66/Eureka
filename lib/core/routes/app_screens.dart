@@ -1,4 +1,5 @@
 import 'package:eureka/views/AnonymeView.dart';
+import 'package:eureka/views/TestView.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../../views/HomeView.dart';
@@ -16,23 +17,27 @@ class AppScreens {
   static final routes = [
     GetPage(
       name: RoutePaths.home,
-      page: () => const HomeViewWidget(),
+      page: () => const HomeView(),
     ),
     GetPage(
       name: RoutePaths.login,
-      page: () => const LoginViewWidget(),
+      page: () => LoginView(),
     ),
     GetPage(
       name: RoutePaths.register,
-      page: () => const RegisterViewWidget(),
+      page: () => RegisterView(),
     ),
     GetPage(
       name: RoutePaths.profile,
-      page: () => const ProfileViewWidget(),
+      page: () => const ProfileView(),
     ),
     GetPage(
       name: RoutePaths.anonyme,
-      page: () => const Anonymeview(),
+      page: () => const AnonymeView(),
+    ),
+    GetPage(
+      name: RoutePaths.test,
+      page: () => const TestView(),
     ),
   ];
 }

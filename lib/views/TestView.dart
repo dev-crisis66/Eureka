@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eureka/components/CustomButton.dart';
 import 'package:eureka/components/TestTile.dart';
-import 'package:eureka/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,6 +21,12 @@ class TestView extends StatelessWidget {
             Get.offNamed("/login");
           },
           text: "Déconnecte moi !",
+        ),
+        CustomButton(
+          onPressed: () {
+            Get.offNamed("/home");
+          },
+          text: "Home !",
         ),
         StreamBuilder(
             stream: UserModel.getUsers(),

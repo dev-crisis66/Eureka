@@ -1,20 +1,18 @@
 import 'package:eureka/components/CustomButton.dart';
 import 'package:eureka/components/CustomTextButton.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:flutter/material.dart';
 
 import '../utils.dart';
 
-class Anonymeview extends StatefulWidget {
-  const Anonymeview({super.key});
+class AnonymeView extends StatefulWidget {
+  const AnonymeView({super.key});
 
   @override
-  State<Anonymeview> createState() => _Anonymeview();
+  State<AnonymeView> createState() => _AnonymeView();
 }
 
-class _Anonymeview extends State<Anonymeview> {
+class _AnonymeView extends State<AnonymeView> {
   @override
   void setState(VoidCallback callback) {
     super.setState(callback);
