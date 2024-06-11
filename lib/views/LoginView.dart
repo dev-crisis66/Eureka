@@ -1,5 +1,8 @@
+import 'package:eureka/components/CustomButton.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../utils.dart';
 
 class LoginViewWidget extends StatefulWidget {
   const LoginViewWidget({super.key});
@@ -12,151 +15,126 @@ class _LoginViewWidgetState extends State<LoginViewWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  void initState() {}
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Colors.white,
-      body: Container(
-        width: MediaQuery.sizeOf(context).width,
-        height: MediaQuery.sizeOf(context).height * 1,
-        child: Stack(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(0),
-              child: Image.network(
-                'https://picsum.photos/seed/1/200',
-                width: MediaQuery.sizeOf(context).width,
-                height: MediaQuery.sizeOf(context).height * 1,
-                fit: BoxFit.cover,
-              ),
+      backgroundColor: Utils.darkGrey,
+      body: Stack(
+        children: [
+          Container(
+            alignment: AlignmentDirectional(0, 0),
+            child: Image.asset(
+              'images/register.png',
+              fit: BoxFit.cover,
             ),
-            Form(
-              autovalidateMode: AutovalidateMode.disabled,
-              child: Align(
-                alignment: AlignmentDirectional(0, 0),
+          ),
+          Center(
+            child: Container(
+              width: 300.0,
+              child: Form(
+                autovalidateMode: AutovalidateMode.disabled,
                 child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Align(
-                      alignment: AlignmentDirectional(0, 0),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(30, 0, 30, 0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(-1, 0),
-                              child: Text(
-                                'Email',
-                              ),
-                            ),
-                            TextFormField(
-                              autofocus: true,
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.black,
-                                    width: 2,
-                                  ),
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.orange,
-                                    width: 2,
-                                  ),
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                errorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.red,
-                                    width: 2,
-                                  ),
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                focusedErrorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.red,
-                                    width: 2,
-                                  ),
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                filled: true,
-                                fillColor: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
+                    SizedBox(
+                      height: 160,
+                    ),
+                    Text(
+                      'Login',
+                      style: TextStyle(
+                        color: Utils.orange,
+                        fontSize: 18,
                       ),
                     ),
-                    Align(
-                      alignment: AlignmentDirectional(0, 0),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(30, 0, 30, 0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(-1, 0),
-                              child: Text(
-                                'Mot de passe',
-                              ),
-                            ),
-                            TextFormField(
-                              autofocus: true,
-                              decoration: InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.orange,
-                                    width: 2,
-                                  ),
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.orange,
-                                    width: 2,
-                                  ),
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                errorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.red,
-                                    width: 2,
-                                  ),
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                focusedErrorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.red,
-                                    width: 2,
-                                  ),
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                filled: true,
-                                fillColor: Colors.white,
-                                suffixIcon: InkWell(
-                                  onTap: () => (),
-                                  focusNode: FocusNode(skipTraversal: true),
-                                  child: Icon(
-                                    Icons.visibility_outlined,
-                                    size: 22,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
+                    TextFormField(
+                      autofocus: true,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black,
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(15),
                         ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        errorBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.red,
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        focusedErrorBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.red,
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
                       ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Mot de passe',
+                          style: TextStyle(
+                            color: Utils.orange,
+                            fontSize: 18,
+                          ),
+                        ),
+                        TextFormField(
+                          autofocus: true,
+                          decoration: InputDecoration(
+                            enabledBorder: UnderlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.orange,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            errorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.red,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            focusedErrorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.red,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            filled: true,
+                            fillColor: Colors.white,
+                            suffixIcon: InkWell(
+                              onTap: () => (),
+                              focusNode: FocusNode(skipTraversal: true),
+                              child: Icon(
+                                Icons.visibility_outlined,
+                                size: 22,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     Container(
                       width: 100,
@@ -171,22 +149,17 @@ class _LoginViewWidgetState extends State<LoginViewWidget> {
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          TextButton(
+                          CustomButton(
                             onPressed: () {
                               Get.toNamed('/home');
-                              // coucou
                             },
-                            child: Text(
-                              'Se connecter',
-                            ),
+                            backgroundColor: Utils.orange,
+                            text: 'Se connecter',
+                            textColor: Colors.white,
                           ),
                           Align(
                             alignment: AlignmentDirectional(0, 0),
                             child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
                               onTap: () async {},
                               child: Text(
                                 'S\'inscrire',
@@ -207,8 +180,8 @@ class _LoginViewWidgetState extends State<LoginViewWidget> {
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

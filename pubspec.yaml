@@ -23,9 +23,19 @@ dev_dependencies:
 
 flutter:
 
+  assets:
+    - assets/
+    - assets/images/
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter.ttf
+          style: normal
+    - family: KleeOne
+      fonts:
+        - asset: assets/fonts/KleeOne.ttf
+          style: normal
+
   uses-material-design: true
 
-assets:
-  - assets/images/
-  - assets/fonts/
 

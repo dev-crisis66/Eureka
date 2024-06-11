@@ -4,10 +4,10 @@ class HomeViewWidget extends StatefulWidget {
   const HomeViewWidget({super.key});
 
   @override
-  State<HomeViewWidget> createState() => _HomevViewWidgetState();
+  State<HomeViewWidget> createState() => _HomeViewWidgetState();
 }
 
-class _HomevViewWidgetState extends State<HomeViewWidget> {
+class _HomeViewWidgetState extends State<HomeViewWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
